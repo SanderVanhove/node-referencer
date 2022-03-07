@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "BlieBla",
+"language": "GDScript",
+"path": "res://blieBla.gd"
+} ]
+_global_script_class_icons={
+"BlieBla": ""
+}
+
 [application]
 
 config/name="NodeReferencer"

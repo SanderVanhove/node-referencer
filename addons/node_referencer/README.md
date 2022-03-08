@@ -52,14 +52,14 @@ You can change the location of this block of code. As long as the `### Automatic
 
 ## FAQ
 
-## Can I relocate the reference block?
+### Can I relocate the reference block?
 Yes, as long as it has the same structure.
 
-## Can I change the variable names?
+### Can I change the variable names?
 Yes, rename away!
 
-## Why didn't you use exported `NodePaths`?
+### Why didn't you use exported `NodePaths`?
 Because `NodePaths` bug out some times, in my experience.
 
-## Why do I have to close and reopen the parent's script?
+### Why do I have to close and reopen the parent's script?
 The script gets saved to dick correctly, but Godot holds a cache that only get invalidated after closing it. If you know a workaround please let me know.

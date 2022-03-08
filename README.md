@@ -62,4 +62,4 @@ Yes, rename away!
 Because `NodePaths` bug out some times, in my experience.
 
 ### Why do I have to close and reopen the parent's script?
-The script gets saved to dick correctly, but Godot holds a cache that only get invalidated after closing it. If you know a workaround please let me know.
+The script gets saved to disk correctly, but Godot holds a cache that only get invalidated after closing it. If you know a workaround please let me know.

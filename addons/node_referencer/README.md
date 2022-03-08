@@ -4,7 +4,7 @@ Easily add node references to scripts and copy the variable name to your clipboa
 
 ### Example
 
-```
+```gdscript
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 ```
 
@@ -38,7 +38,7 @@ AnimatedSprite -> _animated_sprite
 
 This plugin will create a code block within the parent script to group all its references. This block looks like this:
 
-```
+```gdscript
 ### Automatic References Start ###
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 onready var _kinematic_body2_d: KinematicBody2D = $KinematicBody2D

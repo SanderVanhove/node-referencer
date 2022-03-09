@@ -12,11 +12,13 @@ onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 
 ## Usage
 
-1. There will be a dropdown menu in the scene toolbar, if the plugin detects that one of the node's parents has a script. The plugin will scan recursively up the tree.
+1. Select one or more nodes. There will be a dropdown menu in the scene toolbar if the plugin detects that one of the node's parents has a script. The plugin will scan recursively up the tree.
 2. Select the parent to which you want to add the reference.
 3. Select the last option to copy the last created reference's variable name.
 4. **Reload the parent script** by closing it and reopening it. For some reason I can't get it to reload automatically.
 5. Now you can use that variable.
+
+![Usage](screenshots/usage.gif)
 
 ## Features
 

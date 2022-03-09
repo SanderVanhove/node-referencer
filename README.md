@@ -8,21 +8,25 @@ Easily add node references to scripts and copy the variable name to your clipboa
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 ```
 
+![Overview Gif](screenshots/overview.gif)
+
 ## Usage
 
-1. There will be a button under the `Node` category, in the inspector, if the plugin detects that one of the node's parents has a script. The plugin will scan recursively up the tree.
-2. Click it to add a reference to the parent's script.
-3. Click the button again to copy the resulting variable name.
+1. There will be a dropdown menu in the scene toolbar, if the plugin detects that one of the node's parents has a script. The plugin will scan recursively up the tree.
+2. Select the parent to which you want to add the reference.
+3. Select the last option to copy the last created reference's variable name.
 4. **Reload the parent script** by closing it and reopening it. For some reason I can't get it to reload automatically.
 5. Now you can use that variable.
 
 ## Features
 
-* Adds a reference of a node to the parent's script.
-* Make sure the reference has the appropriate class. Works with custom `class_name`s and `extends`.
-* Prevent duplicate references.
-* Enumerate variable names when there is a conflict in naming.
-* Sort references alphabetically.
+* Add a reference for a node to one of its parents' script.
+* Add references for multiple nodes at once.
+* Copy the name of the last made reference.
+* Makes sure the reference has the appropriate class. Works with custom `class_name`s and `extends`.
+* Prevents duplicate references.
+* Enumerates variable names when there is a conflict in naming.
+* Sorts references alphabetically.
 
 ## Variable name convention
 
@@ -41,8 +45,8 @@ This plugin will create a code block within the parent script to group all its r
 ```gdscript
 ### Automatic References Start ###
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
-onready var _kinematic_body2_d: KinematicBody2D = $KinematicBody2D
-onready var _ray_cast2_d: RayCast2D = $AnimatedSprite/RayCast2D
+onready var _kinematic_body_2d: KinematicBody2D = $KinematicBody2D
+onready var _ray_cast_2d: RayCast2D = $AnimatedSprite/RayCast2D
 ### Automatic References Stop ###
 ```
 

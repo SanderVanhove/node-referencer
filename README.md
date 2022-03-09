@@ -1,6 +1,6 @@
 # Node Referencer
 
-Easily add node references to scripts and copy the variable name to your clipboard.
+Godot plugin to easily add node references to scripts and copy the variable name to your clipboard.
 
 ### Example
 

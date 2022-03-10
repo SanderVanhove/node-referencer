@@ -46,6 +46,7 @@ func _update_button_visibility() -> void:
 		return
 
 	var selected_paths: Array = []
+	var found_parents: Array = []
 	var is_visible: bool = true
 
 	_valid_parents.clear()
@@ -64,8 +65,13 @@ func _update_button_visibility() -> void:
 			var parents: Array = _find_valid_parents(object)
 
 			for parent in parents:
-				if not parent in _valid_parents:
-					_valid_parents.append(parent)
+				if not parent in found_parents:
+					found_parents.append(parent)
+	
+	# Make sure only common parents are shown
+	for parent in found_parents:
+		if _is_common_parent(parent.get_path(), selected_paths):
+			_valid_parents.append(parent)
 
 	# Walk reversed through the valid parents
 	for i in range(len(_valid_parents) - 1, -1, -1):
@@ -75,11 +81,21 @@ func _update_button_visibility() -> void:
 		_popup_menu_2d.add_item(parent_path, i)
 		_popup_menu_3d.add_item(parent_path, i)
 
+	_popup_menu_2d.add_separator()
+	_popup_menu_3d.add_separator()
+
 	_popup_menu_2d.add_item("Copy last reference")
 	_popup_menu_3d.add_item("Copy last reference")
 
 	_ref_2d_button.visible = len(_valid_parents)
 	_ref_3d_button.visible = _ref_2d_button.visible
+
+
+
+func _is_common_parent(object_path: String, selected_paths: Array) -> bool:
+	for path in selected_paths:
+		if path.find(object_path) < 0: return false
+	return true
 
 
 func _parent_was_processed(object_path: String, selected_paths: Array) -> bool:
@@ -208,7 +224,7 @@ func _generate_variable_name(node: Node, code: String) -> String:
 	# Check if name already exists
 	var index: int = 1
 	var indexed_name: String = name
-	while code.find(indexed_name) >= 0:
+	while code.find("onready var " + indexed_name) >= 0:
 		indexed_name = name + "_" + str(index)
 		index += 1
 

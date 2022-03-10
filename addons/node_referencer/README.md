@@ -1,12 +1,14 @@
 # Node Referencer
 
-Easily add node references to scripts and copy the variable name to your clipboard.
+Godot plugin to easily add node references to scripts and copy the variable name to your clipboard.
 
 ### Example
 
 ```gdscript
 onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 ```
+
+![Overview Gif](screenshots/overview.gif)
 
 ## Usage
 
@@ -15,6 +17,8 @@ onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 3. Select the last option to copy the last created reference's variable name.
 4. **Reload the parent script** by closing it and reopening it. For some reason I can't get it to reload automatically.
 5. Now you can use that variable.
+
+![Usage](screenshots/usage.gif)
 
 ## Features
 
@@ -59,6 +63,11 @@ Yes, as long as it has the same structure.
 
 ### Can I change the variable names?
 Yes, rename away!
+
+## I changed the node's position in the scene, what now?
+You can do one of two things:
+* Remove the reference from the reference code block and add it again using the plugin.
+* Manually alter the path in the reference code block.
 
 ### Why didn't you use exported `NodePaths`?
 Because `NodePaths` bug out some times, in my experience.

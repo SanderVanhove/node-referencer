@@ -64,6 +64,11 @@ Yes, as long as it has the same structure.
 ### Can I change the variable names?
 Yes, rename away!
 
+## I changed the node's position in the scene, what now?
+You can do one of two things:
+* Remove the reference from the reference code block and add it again using the plugin.
+* Manually alter the path in the reference code block.
+
 ### Why didn't you use exported `NodePaths`?
 Because `NodePaths` bug out some times, in my experience.
 

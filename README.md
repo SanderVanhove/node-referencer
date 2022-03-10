@@ -12,6 +12,8 @@ onready var _animated_sprite: AnimatedSprite = $AnimatedSprite
 
 ## Usage
 
+Check out the [video tutorial](https://www.youtube.com/watch?v=11w-n31GBA4).
+
 1. Select one or more nodes. There will be a dropdown menu in the scene toolbar if the plugin detects that one of the node's parents has a script. The plugin will scan recursively up the tree.
 2. Select the parent to which you want to add the reference.
 3. Select the last option to copy the last created reference's variable name.

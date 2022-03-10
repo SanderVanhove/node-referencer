@@ -10,5 +10,5 @@
 /icon.png           export-ignore
 /Test.gd            export-ignore
 /Test.tscn          export-ignore
-/AnimatedSprite.gd  export-ignore
+/Node2D.gd          export-ignore
 /default_env.tres   export-ignore

@@ -8,4 +8,4 @@ onready var _ray_cast_2d: RayCast2D = $Node2D/AnimatedSprite/RayCast2D
 const A_CONSTANT: int = 4
 
 func _ready() -> void:
-	pass
+	_ray_cast_2d

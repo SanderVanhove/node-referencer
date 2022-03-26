@@ -224,7 +224,7 @@ func _generate_variable_name(node: Node, code: String) -> String:
 	# Check if name already exists
 	var index: int = 1
 	var indexed_name: String = name
-	while code.find("onready var " + indexed_name) >= 0:
+	while code.find("onready var " + indexed_name + ": ") >= 0:
 		indexed_name = name + "_" + str(index)
 		index += 1
 
@@ -232,7 +232,7 @@ func _generate_variable_name(node: Node, code: String) -> String:
 
 
 func _generate_node_path(node: Node, parent: Node) -> String:
-	var node_path: String = (str(node.get_path())).split(parent.name)[1]
+	var node_path: String = (str(node.get_path())).split(parent.name, true, 1)[1]
 	node_path[0] = "$"
 	return node_path
 

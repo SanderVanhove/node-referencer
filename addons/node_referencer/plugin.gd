@@ -213,7 +213,7 @@ func _generate_reference(node: Node, parent: Node, code: String) -> String:
 func _generate_variable_name(node: Node, code: String) -> String:
 	var name = node.name
 
-	name = name.replace("2D", "_2d")
+	name = name.replace("2D", "_2d").replace(" ", "")
 
 	for letter in CAPITAL_LETTERS:
 		name = name.replace(letter, "_" + letter.to_lower())
@@ -233,7 +233,14 @@ func _generate_variable_name(node: Node, code: String) -> String:
 
 func _generate_node_path(node: Node, parent: Node) -> String:
 	var node_path: String = (str(node.get_path())).split(parent.name, true, 1)[1]
-	node_path[0] = "$"
+	
+	node_path.erase(0, 1)
+	
+	if node_path.find(" ") >= 0:
+		node_path = "\"" + node_path + "\""
+	
+	node_path = "$" + node_path
+	
 	return node_path
 
 

@@ -8,10 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "CustomeClass",
+"language": "GDScript",
+"path": "res://Test/ToolCustomeClassScript.gd"
+} ]
+_global_script_class_icons={
+"CustomeClass": ""
+}
+
 [application]
 
 config/name="NodeReferencer"
-run/main_scene="res://Test.tscn"
+run/main_scene="res://Test/Test.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -24,4 +34,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Test/default_env.tres"

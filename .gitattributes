@@ -14,3 +14,5 @@
 /default_env.tres   export-ignore
 /screenshots        export-ignore
 /screenshots/       export-ignore
+/Test               export-ignore
+/Test/              export-ignore

@@ -16,3 +16,5 @@
 /screenshots/       export-ignore
 /Test               export-ignore
 /Test/              export-ignore
+/assets             export-ignore
+/assets/            export-ignore

@@ -185,10 +185,21 @@ func _splitup_code(code: String) -> PoolStringArray:
 	var start_split: PoolStringArray = code.split(REFERENCE_BLOCK_START + "\n", true, 1)
 
 	if len(start_split) == 1:
-		var split_code: PoolStringArray = code.split("\n", true, 1)
-		split_code[0] += "\n\n"
-		split_code[1] = "\n" + split_code[1]
+		var regex = RegEx.new()
+		if code.find("class_name") != -1:
+			regex.compile("class_name .+\n")
+		else:
+			regex.compile("extends .+\n")
+		
+		var split_index: int = regex.search(code).get_end()
+		var split_code: PoolStringArray = [
+			code.left(split_index) + "\n\n",
+			"\n" + code.right(split_index)
+		]
+
+		# Insert an empty string where the ref block will come
 		split_code.insert(1, "")
+
 		return split_code
 
 	var block_and_end: PoolStringArray = start_split[1].split(REFERENCE_BLOCK_STOP, true, 1)
@@ -260,8 +271,5 @@ func _generate_node_class(node: Node) -> String:
 
 
 func _save_script(script: Script) -> void:
-	script.emit_changed()
-
 	ResourceSaver.save(script.resource_path, script)
-
-	script.reload()
+	script.emit_changed()

@@ -67,7 +67,7 @@ func _update_button_visibility() -> void:
 			for parent in parents:
 				if not parent in found_parents:
 					found_parents.append(parent)
-	
+
 	# Make sure only common parents are shown
 	for parent in found_parents:
 		if _is_common_parent(parent.get_path(), selected_paths):
@@ -190,7 +190,7 @@ func _splitup_code(code: String) -> PoolStringArray:
 			regex.compile("class_name .+\n")
 		else:
 			regex.compile("extends .+\n")
-		
+
 		var split_index: int = regex.search(code).get_end()
 		var split_code: PoolStringArray = [
 			code.left(split_index) + "\n\n",
@@ -244,14 +244,14 @@ func _generate_variable_name(node: Node, code: String) -> String:
 
 func _generate_node_path(node: Node, parent: Node) -> String:
 	var node_path: String = (str(node.get_path())).split(parent.name, true, 1)[1]
-	
+
 	node_path.erase(0, 1)
-	
+
 	if node_path.find(" ") >= 0:
 		node_path = "\"" + node_path + "\""
-	
+
 	node_path = "$" + node_path
-	
+
 	return node_path
 
 
@@ -271,5 +271,8 @@ func _generate_node_class(node: Node) -> String:
 
 
 func _save_script(script: Script) -> void:
-	ResourceSaver.save(script.resource_path, script)
-	script.emit_changed()
+	ResourceSaver.save(script.resource_path, script.duplicate())
+	# For version 3.5
+	var script_editor := get_editor_interface().get_script_editor()
+	if script_editor.has_method("reload_scripts"):
+		script_editor.call("reload_scripts")

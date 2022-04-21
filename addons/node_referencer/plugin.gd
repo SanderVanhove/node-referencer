@@ -5,8 +5,6 @@ extends EditorPlugin
 const MAX_DEPTH: int = 100
 const REFERENCE_BLOCK_START: String = "### Automatic References Start ###"
 const REFERENCE_BLOCK_STOP: String = "### Automatic References Stop ###"
-const CAPITAL_LETTERS: Array = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
 
 var _ref_3d_button: MenuButton
 var _ref_2d_button: MenuButton
@@ -222,12 +220,7 @@ func _generate_reference(node: Node, parent: Node, code: String) -> String:
 
 
 func _generate_variable_name(node: Node, code: String) -> String:
-	var name = node.name
-
-	name = name.replace("2D", "_2d").replace(" ", "")
-
-	for letter in CAPITAL_LETTERS:
-		name = name.replace(letter, "_" + letter.to_lower())
+	var name := node.name.capitalize().replace(" ", "_").to_lower()
 
 	if not name.begins_with("_"):
 		name = "_" + name
@@ -243,16 +236,12 @@ func _generate_variable_name(node: Node, code: String) -> String:
 
 
 func _generate_node_path(node: Node, parent: Node) -> String:
-	var node_path: String = (str(node.get_path())).split(parent.name, true, 1)[1]
+	var node_path: String = parent.get_path_to(node)
 
-	node_path.erase(0, 1)
+	if " " in node_path:
+		return '$"%s"' % node_path
 
-	if node_path.find(" ") >= 0:
-		node_path = "\"" + node_path + "\""
-
-	node_path = "$" + node_path
-
-	return node_path
+	return '$%s' % node_path
 
 
 func _generate_node_class(node: Node) -> String:

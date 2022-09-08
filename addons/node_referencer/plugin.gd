@@ -236,6 +236,12 @@ func _generate_variable_name(node: Node, code: String) -> String:
 
 
 func _generate_node_path(node: Node, parent: Node) -> String:
+	# Support for scene unique nodes (Godot >=3.5)
+	# without breaking support for older versions
+	var unique = node.get("unique_name_in_owner")
+	if unique != null and bool(unique):
+		return "get_node(\"%%%s\")" % node.name
+		
 	var node_path: String = parent.get_path_to(node)
 
 	if " " in node_path:
